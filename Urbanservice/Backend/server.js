@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -15,9 +16,7 @@ app.use(express.json());
    CONNECT TO MONGODB
 ========================= */
 
-mongoose.connect(
-"mongodb://sukhamritsingh1512_db_user:parul123@ac-wbgrtiy-shard-00-00.rw0kzwr.mongodb.net:27017,ac-wbgrtiy-shard-00-01.rw0kzwr.mongodb.net:27017,ac-wbgrtiy-shard-00-02.rw0kzwr.mongodb.net:27017/urbanhub?ssl=true&replicaSet=atlas-hqgagh-shard-0&authSource=admin&retryWrites=true&w=majority"
-)
+mongoose.connect(process.env.MONGO_URI)
 
 .then(() => {
 console.log("✅ MongoDB Atlas Connected");
@@ -119,8 +118,10 @@ res.render("bookings", { bookings });
    SERVER
 ========================= */
 
-app.listen(7000, ()=>{
+const PORT = process.env.PORT || 7000;
 
-console.log("🚀 Urbanservice running on port 7000");
+app.listen(PORT, () => {
+
+console.log(`🚀 Urbanservice running on port ${PORT}`);
 
 });

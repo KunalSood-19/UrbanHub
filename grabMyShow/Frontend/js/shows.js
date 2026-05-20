@@ -37,17 +37,18 @@ const res = await fetch(`${BASE_URL}/api/shows?movieId=${movieId}&city=${city}`)
 // ================= LOAD SHOWS =================
 async function loadShows() {
   const movieId = localStorage.getItem("movieId");
-  const city = "Rajpura"; // ✅ Ludhiana → Rajpura
+  const city = "Ludhiana"; // ✅ Ludhiana → Rajpura
 
   const res = await fetch(`${BASE_URL}/shows?movieId=${movieId}&city=${city}`);
   allShows = await res.json();
+ console.log(allShows);
 
   if (!allShows.length) {
     document.getElementById("showsContainer").innerHTML =
       "<p style='padding:20px'>No shows available.</p>";
     return;
   }
-
+ 
   loadDates();
 }
 

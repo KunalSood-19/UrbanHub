@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GrabMyShow - Movie Details</title>
+
+<link rel="stylesheet" href="../css/shows.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+
+.main-header{
+background:#020617;
+border-bottom:1px solid #1e293b;
+}
+
+.header-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 50px;
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:white;
+}
+
+.search-bar input{
+width:420px;
+padding:10px 15px;
+border-radius:6px;
+border:none;
+outline:none;
+background:#1e293b;
+color:white;
+}
+
+.header-right{
+display:flex;
+gap:20px;
+align-items:center;
+}
+
+.signin-btn{
+background:#38bdf8;
+border:none;
+padding:8px 16px;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+}
+
+.menu{
+font-size:20px;
+cursor:pointer;
+}
+
+/* NAV BAR */
+
+.header-bottom{
+display:flex;
+justify-content:space-between;
+padding:10px 50px;
+background:#020617;
+border-top:1px solid #1e293b;
+}
+
+.header-bottom a{
+margin-right:20px;
+cursor:pointer;
+color:#cbd5f5;
+font-size:14px;
+}
+
+.header-bottom a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+
+.movie-hero{
+position:relative;
+height:420px;
+display:flex;
+align-items:center;
+padding:40px 80px;
+background:linear-gradient(90deg,#020617 60%, #0f172a);
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:linear-gradient(90deg,#020617 50%, transparent);
+}
+
+.hero-content{
+position:relative;
+display:flex;
+gap:40px;
+align-items:center;
+}
+
+/* POSTER */
+
+.movie-poster img{
+width:220px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+
+.in-cinemas{
+margin-top:10px;
+background:#38bdf8;
+padding:6px 10px;
+border-radius:4px;
+font-size:12px;
+text-align:center;
+color:black;
+font-weight:600;
+}
+
+/* MOVIE INFO */
+
+.movie-title{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.rating-box{
+background:#1e293b;
+padding:10px 15px;
+border-radius:6px;
+display:inline-block;
+margin-bottom:12px;
+}
+
+.movie-meta{
+color:#cbd5f5;
+font-size:14px;
+}
+
+/* SHOWS */
+
+.shows-section{
+padding:50px 80px;
+}
+
+.shows-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.shows-header h2{
+color:#38bdf8;
+}
+
+/* DATE TABS */
+
+.date-tabs{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.date-tab{
+padding:10px 15px;
+border-radius:6px;
+background:#020617;
+border:1px solid #1e293b;
+cursor:pointer;
+transition:0.2s;
+}
+
+.date-tab:hover{
+border-color:#38bdf8;
+}
+
+.date-tab.active{
+background:#38bdf8;
+color:black;
+}
+
+/* SHOW CONTAINER */
+
+#showsContainer{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+border-top:1px solid #1e293b;
+margin-top:40px;
+color:#cbd5f5;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="main-header">
+
+<div class="header-top">
+
+<div class="logo">grab<span>my</span>show</div>
+
+<div class="search-bar">
+<input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+</div>
+
+<div class="header-right">
+<span class="location">Ludhiana ▼</span>
+<!-- <button class="signin-btn">Sign in</button> -->
+<div class="menu">☰</div>
+</div>
+
+</div>
+
+<div class="header-bottom">
+
+<div class="nav-left">
+<a>Movies</a>
+<a>Stream</a>
+<a>Events</a>
+<a>Plays</a>
+<a>Sports</a>
+<a>Activities</a>
+</div>
+
+<div class="nav-right">
+<a>ListYourShow</a>
+<a>Corporates</a>
+<a>Offers</a>
+<a>Gift Cards</a>
+</div>
+
+</div>
+
+</header>
+
+<section class="movie-hero" id="movieHero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<div class="movie-poster">
+<img id="posterImage" src="img.jpg">
+<div class="in-cinemas">In cinemas</div>
+</div>
+
+<div class="movie-info">
+
+<h1 id="movieTitle" class="movie-title"></h1>
+
+<div class="rating-box">
+👍 <span id="interestCount">10K+</span> are interested
+</div>
+
+<div class="movie-meta" id="movieMeta">
+2h • Genre • UA 7+ • 2026
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="shows-section">
+
+<div class="shows-header">
+
+<h2>Select Date</h2>
+
+<div class="date-tabs" id="dateTabs">
+</div>
+
+</div>
+
+<div id="showsContainer">
+</div>
+
+</section>
+
+<footer>
+© 2026 GrabMyShow. All Rights Reserved.
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/shows.js"></script>
+
+</body>
+</html>

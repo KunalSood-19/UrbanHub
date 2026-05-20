@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Seats</title>
+
+<link rel="stylesheet" href="../css/grabmyshow.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+
+.seat-header{
+background:#020617;
+padding:20px 60px;
+border-bottom:1px solid #1e293b;
+}
+
+.seat-header h2{
+font-weight:600;
+}
+
+/* LAYOUT */
+
+.seat-layout{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+text-align:center;
+}
+
+/* SECTION TITLES */
+
+.section-title{
+margin-top:25px;
+margin-bottom:10px;
+font-size:18px;
+color:#38bdf8;
+font-weight:600;
+}
+
+/* SEAT GRID */
+
+#primeSection,
+#classicSection{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+margin-bottom:25px;
+}
+
+/* SEAT */
+
+.seat{
+width:30px;
+height:30px;
+border-radius:6px;
+background:#1e293b;
+cursor:pointer;
+transition:0.2s;
+}
+
+.seat:hover{
+background:#38bdf8;
+}
+
+.seat.selected{
+background:#22c55e;
+}
+
+.seat.booked{
+background:#ef4444;
+cursor:not-allowed;
+}
+
+/* SCREEN */
+
+.screen-box{
+margin-top:40px;
+}
+
+.screen{
+height:8px;
+background:linear-gradient(to right,#38bdf8,#60a5fa);
+border-radius:4px;
+margin-bottom:10px;
+}
+
+.screen-box p{
+font-size:12px;
+color:#94a3b8;
+}
+
+/* BOTTOM BAR */
+
+.bottom-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#020617;
+border-top:1px solid #1e293b;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+}
+
+.left-summary{
+display:flex;
+flex-direction:column;
+}
+
+#summary{
+font-size:14px;
+color:#cbd5f5;
+}
+
+#totalPrice{
+font-size:20px;
+font-weight:600;
+color:#38bdf8;
+}
+
+/* BUTTON */
+
+.bb{
+background:#38bdf8;
+border:none;
+padding:12px 25px;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.bb:hover{
+background:#0ea5e9;
+}
+
+.coupon-box{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.coupon-box input{
+padding:12px;
+border:none;
+outline:none;
+border-radius:10px;
+background:#1e293b;
+color:white;
+width:220px;
+}
+
+.coupon-box button{
+padding:12px 18px;
+border:none;
+border-radius:10px;
+background:#38bdf8;
+color:black;
+font-weight:600;
+cursor:pointer;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<header class="seat-header">
+<h2>Select Seats</h2>
+</header>
+
+<div class="seat-layout">
+
+<div class="section-title" id="primeTitle"></div>
+<div id="primeSection"></div>
+
+<div class="section-title" id="classicTitle"></div>
+<div id="classicSection"></div>
+
+<div class="screen-box">
+<div class="screen"></div>
+<p>All eyes this way please</p>
+</div>
+
+</div>
+
+<div class="bottom-bar">
+
+<div class="left-summary">
+<div id="summary">0 Seats Selected</div>
+<div id="totalPrice">₹0</div>
+</div>
+<div class="coupon-box">
+
+<input
+type="text"
+id="couponCode"
+placeholder="Enter Coupon Code">
+
+<button onclick="applyCoupon()">
+Apply
+</button>
+
+</div>
+<button class="bb" onclick="createOrder()">Proceed</button>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/seats.js"></script>
+<script src="../js/payment.js"></script>
+</body>
+</html>

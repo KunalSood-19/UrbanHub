@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Bookings</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+margin:0;
+padding:40px;
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.ticket{
+background:#1e293b;
+padding:20px;
+border-radius:8px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.ticket div{
+font-size:14px;
+}
+
+button{
+background:#ef4444;
+border:none;
+padding:10px 16px;
+color:white;
+border-radius:6px;
+cursor:pointer;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>My Ticket History</h1>
+
+<div class="container" id="bookingContainer">
+
+Loading bookings...
+
+</div>
+
+<div style="text-align:center;">
+<button onclick="goHome()">Go To Home</button>
+</div>
+
+<script src="../js/api.js"></script>
+<script>
+
+async function loadBookings(){
+
+const token = localStorage.getItem("token");
+
+const res = await fetch("http://127.0.0.1:5000/api/booking/my-bookings",{
+headers:{
+"Authorization":"Bearer "+token
+}
+});
+
+const bookings = await res.json();
+
+const container = document.getElementById("bookingContainer");
+container.innerHTML="";
+
+if(bookings.length===0){
+container.innerHTML="<p>No bookings found</p>";
+return;
+}
+
+bookings.forEach(b => {
+
+const div=document.createElement("div");
+div.className="ticket";
+
+div.innerHTML=`
+
+<div>
+<b>Show ID:</b> ${b.showId}<br>
+<b>Seats:</b> ${b.seats.join(", ")}
+</div>
+
+<div>
+<b>Amount:</b> ₹${b.totalAmount}<br>
+<b>Status:</b> ${b.paymentStatus}
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+function goHome(){
+window.location.href="../index.html";
+}
+
+loadBookings();
+
+</script>
+
+</body>
+</html>

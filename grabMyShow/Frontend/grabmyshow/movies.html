@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GrabMyShow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#020617;
+--card:#0f172a;
+--card2:#111827;
+--line:rgba(255,255,255,.06);
+--text:#f8fafc;
+--sub:#94a3b8;
+--blue:#38bdf8;
+--red:#ef4444;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top left,#38bdf822,transparent 25%),
+radial-gradient(circle at top right,#ef444422,transparent 25%),
+linear-gradient(180deg,#020617,#030712 58%,#000);
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.top-header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:999;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:16px 55px;
+background:rgba(2,6,23,.72);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--line);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:var(--blue);
+letter-spacing:-1px;
+}
+
+.logo span{
+color:#fff;
+}
+
+.search-wrap{
+flex:1;
+display:flex;
+justify-content:center;
+padding:0 28px;
+}
+
+.search-bar{
+width:100%;
+max-width:520px;
+padding:13px 18px;
+border-radius:999px;
+border:none;
+outline:none;
+background:rgba(255,255,255,.05);
+border:1px solid var(--line);
+color:#fff;
+font-size:14px;
+}
+
+.search-bar:focus{
+border-color:var(--blue);
+box-shadow:0 0 0 4px rgba(56,189,248,.12);
+}
+
+.right-actions{
+display:flex;
+gap:14px;
+align-items:center;
+}
+
+.dine-btn{
+text-decoration:none;
+padding:12px 20px;
+border-radius:999px;
+font-size:14px;
+font-weight:600;
+background:linear-gradient(135deg,#ef4444,#f97316);
+color:#fff;
+box-shadow:0 14px 35px rgba(239,68,68,.22);
+transition:.3s;
+}
+
+.dine-btn:hover{
+transform:translateY(-3px);
+}
+
+.profile a{
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,.06);
+text-decoration:none;
+font-size:18px;
+color:#fff;
+}
+
+.profile a:hover{
+background:var(--blue);
+}
+
+/* HERO */
+
+.hero{
+padding:110px 55px 30px;
+}
+
+.hero-box{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:28px;
+align-items:center;
+background:linear-gradient(180deg,#0f172a,#111827);
+border:1px solid var(--line);
+border-radius:28px;
+padding:40px;
+box-shadow:0 30px 80px rgba(0,0,0,.5);
+overflow:hidden;
+}
+
+.hero-left h1{
+font-size:62px;
+line-height:1.02;
+margin-bottom:18px;
+font-weight:700;
+letter-spacing:-2px;
+}
+
+.hero-left p{
+font-size:15px;
+line-height:1.9;
+color:#d1d5db;
+margin-bottom:26px;
+max-width:540px;
+}
+
+.hero-tag{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+background:rgba(255,255,255,.07);
+font-size:12px;
+margin-bottom:18px;
+}
+
+.hero-actions{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.btn1,.btn2{
+padding:14px 24px;
+border:none;
+border-radius:999px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn1{
+background:var(--blue);
+color:#001018;
+}
+
+.btn2{
+background:rgba(255,255,255,.05);
+color:#fff;
+border:1px solid var(--line);
+}
+
+.btn1:hover,.btn2:hover{
+transform:translateY(-3px);
+}
+
+.hero-right{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-right img{
+width:100%;
+max-width:620px;
+height:auto;
+object-fit:contain;
+filter:drop-shadow(0 25px 50px rgba(0,0,0,.55));
+border-radius:22px;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-top:24px;
+}
+
+.stat{
+background:rgba(255,255,255,.04);
+border:1px solid var(--line);
+padding:22px;
+border-radius:20px;
+text-align:center;
+}
+
+.stat h3{
+font-size:28px;
+margin-bottom:6px;
+}
+
+.stat p{
+font-size:13px;
+color:var(--sub);
+}
+
+/* MOVIES */
+
+.movies-section{
+padding:46px 55px 55px;
+}
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
+}
+
+.section-header h2{
+font-size:30px;
+}
+
+.section-header a{
+text-decoration:none;
+color:var(--sub);
+font-size:14px;
+}
+
+.filters{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:24px;
+}
+
+.filter{
+padding:10px 16px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid var(--line);
+font-size:13px;
+cursor:pointer;
+}
+
+.filter:hover{
+background:var(--blue);
+color:#001018;
+}
+
+.movies-row{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+gap:24px;
+}
+
+.movies-row > div{
+background:linear-gradient(180deg,#0f172a,#111827);
+border:1px solid var(--line);
+padding:10px;
+border-radius:20px;
+transition:.35s;
+cursor:pointer;
+overflow:hidden;
+}
+
+.movies-row > div:hover{
+transform:translateY(-8px);
+box-shadow:0 28px 55px rgba(0,0,0,.55);
+border-color:rgba(56,189,248,.28);
+}
+
+.movies-row img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:14px;
+transition:.35s;
+}
+
+.movies-row > div:hover img{
+transform:scale(1.04);
+}
+
+.movies-row p{
+text-align:left !important;
+padding:0 4px;
+}
+
+.movies-row p:first-of-type{
+margin-top:12px;
+font-size:16px !important;
+font-weight:600;
+color:#fff !important;
+}
+
+.movies-row p:last-of-type{
+margin-top:6px;
+font-size:13px !important;
+color:var(--sub) !important;
+}
+
+/* FOOTER */
+
+.footer{
+padding:55px;
+border-top:1px solid var(--line);
+margin-top:10px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:30px;
+margin-bottom:24px;
+}
+
+.footer h4{
+margin-bottom:12px;
+font-size:15px;
+}
+
+.footer a{
+display:block;
+text-decoration:none;
+color:#9ca3af;
+margin-bottom:10px;
+font-size:14px;
+}
+
+.footer p{
+color:#9ca3af;
+line-height:1.8;
+}
+
+.copy{
+padding-top:20px;
+border-top:1px solid var(--line);
+font-size:13px;
+color:#6b7280;
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.top-header{
+padding:16px 18px;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.search-wrap{
+order:3;
+width:100%;
+padding:0;
+}
+
+.hero{
+padding:105px 18px 20px;
+}
+
+.hero-box{
+grid-template-columns:1fr;
+padding:24px;
+}
+
+.hero-left h1{
+font-size:40px;
+}
+
+.stats,
+.footer-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.movies-section,
+.footer{
+padding-left:18px;
+padding-right:18px;
+}
+
+.movies-row{
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:16px;
+}
+
+.movies-row img{
+height:240px;
+}
+
+}
+
+@media(max-width:600px){
+
+.stats,
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.hero-actions{
+flex-direction:column;
+}
+
+.btn1,.btn2{
+width:100%;
+}
+
+}
+
+/* CINEMATIC HERO V2 */
+
+.hero-v2{
+position:relative;
+padding:120px 60px 50px;
+overflow:hidden;
+}
+
+.hero-bg-layer{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, rgba(56,189,248,.12), transparent 25%),
+radial-gradient(circle at 80% 20%, rgba(239,68,68,.12), transparent 25%),
+linear-gradient(180deg,#020617,#000814 70%,#000);
+z-index:0;
+}
+
+.hero-glow{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+z-index:0;
+}
+
+.hero-glow.one{
+width:240px;
+height:240px;
+background:#38bdf855;
+top:80px;
+left:40px;
+}
+
+.hero-glow.two{
+width:280px;
+height:280px;
+background:#ef444433;
+right:60px;
+top:100px;
+}
+
+.hero-inner{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.hero-chip{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+font-size:13px;
+margin-bottom:22px;
+}
+
+.hero-left h1{
+font-size:72px;
+line-height:1;
+font-weight:700;
+letter-spacing:-2px;
+margin-bottom:22px;
+color:#fff;
+}
+
+.hero-left p{
+font-size:17px;
+line-height:1.9;
+max-width:560px;
+color:#cbd5e1;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:34px;
+}
+
+.hero-primary,
+.hero-secondary{
+text-decoration:none;
+padding:15px 28px;
+border-radius:999px;
+font-weight:700;
+transition:.3s;
+}
+
+.hero-primary{
+background:#38bdf8;
+color:#001018;
+}
+
+.hero-secondary{
+background:rgba(255,255,255,.06);
+color:#fff;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.hero-primary:hover,
+.hero-secondary:hover{
+transform:translateY(-4px);
+}
+
+.hero-metrics{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.metric{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.06);
+padding:18px 22px;
+border-radius:18px;
+min-width:140px;
+}
+
+.metric h3{
+font-size:28px;
+margin-bottom:4px;
+}
+
+.metric span{
+font-size:13px;
+color:#94a3b8;
+}
+
+.hero-right{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:520px;
+}
+
+.poster-card.big{
+width:540px;
+transform:rotate(-3deg);
+border-radius:26px;
+overflow:hidden;
+box-shadow:0 40px 80px rgba(0,0,0,.55);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.poster-card.big img{
+width:100%;
+display:block;
+height:auto;
+}
+
+.mini-card{
+position:absolute;
+padding:14px 18px;
+border-radius:18px;
+background:rgba(15,23,42,.88);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
+font-size:14px;
+font-weight:600;
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.top{
+top:30px;
+right:10px;
+}
+
+.mid{
+left:20px;
+bottom:120px;
+}
+
+.low{
+right:0;
+bottom:40px;
+}
+
+@media(max-width:980px){
+
+.hero-v2{
+padding:110px 20px 40px;
+}
+
+.hero-inner{
+grid-template-columns:1fr;
+}
+
+.hero-left h1{
+font-size:48px;
+}
+
+.poster-card.big{
+width:100%;
+max-width:520px;
+}
+
+.hero-right{
+min-height:auto;
+padding-top:20px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-left h1{
+font-size:38px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-primary,
+.hero-secondary{
+width:100%;
+text-align:center;
+}
+
+.hero-metrics{
+flex-direction:column;
+}
+
+.mini-card{
+display:none;
+}
+
+}
+
+/* HERO V3 REAL PREMIUM */
+
+.hero-v3{
+position:relative;
+padding:120px 60px 60px;
+overflow:hidden;
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 15% 20%, rgba(56,189,248,.10), transparent 25%),
+radial-gradient(circle at 85% 10%, rgba(239,68,68,.12), transparent 25%),
+linear-gradient(180deg,#020617,#000814 65%,#000);
+z-index:0;
+}
+
+.hero-light{
+position:absolute;
+border-radius:50%;
+filter:blur(90px);
+z-index:0;
+}
+
+.hero-light.one{
+width:260px;
+height:260px;
+background:#38bdf844;
+left:0;
+top:120px;
+}
+
+.hero-light.two{
+width:300px;
+height:300px;
+background:#ef444433;
+right:40px;
+top:90px;
+}
+
+.hero-wrap{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+/* LEFT */
+
+.hero-pill{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+font-size:13px;
+margin-bottom:22px;
+}
+
+.hero-left h1{
+font-size:72px;
+line-height:1;
+font-weight:700;
+letter-spacing:-2px;
+margin-bottom:20px;
+}
+
+.hero-left p{
+font-size:17px;
+line-height:1.9;
+color:#cbd5e1;
+max-width:560px;
+margin-bottom:28px;
+}
+
+.hero-btns{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:32px;
+}
+
+.btn-main,
+.btn-glass{
+text-decoration:none;
+padding:15px 28px;
+border-radius:999px;
+font-weight:700;
+transition:.3s;
+}
+
+.btn-main{
+background:#38bdf8;
+color:#001018;
+}
+
+.btn-glass{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+color:#fff;
+}
+
+.btn-main:hover,
+.btn-glass:hover{
+transform:translateY(-4px);
+}
+
+.hero-stats{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.s-box{
+padding:18px 22px;
+border-radius:18px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.06);
+min-width:140px;
+}
+
+.s-box h3{
+font-size:28px;
+margin-bottom:4px;
+}
+
+.s-box span{
+font-size:13px;
+color:#94a3b8;
+}
+
+/* RIGHT */
+
+.hero-right{
+position:relative;
+height:560px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+position:absolute;
+width:230px;
+height:340px;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 35px 80px rgba(0,0,0,.55);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.c1{
+left:40px;
+top:110px;
+transform:rotate(-14deg);
+z-index:1;
+}
+
+.c2{
+left:190px;
+top:40px;
+width:260px;
+height:390px;
+transform:rotate(0deg);
+z-index:3;
+}
+
+.c3{
+right:30px;
+top:120px;
+transform:rotate(14deg);
+z-index:1;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+z-index:5;
+}
+.float-tag{
+position:absolute;
+padding:14px 18px;
+border-radius:18px;
+background:rgba(15,23,42,.9);
+border:1px solid rgba(255,255,255,.08);
+font-size:14px;
+font-weight:600;
+backdrop-filter:blur(12px);
+z-index:20;
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.t1{
+left:20px;
+bottom:70px;
+
+
+}
+
+.t2{
+left:250px;
+bottom:70px;
+z-index: 15;
+}
+
+.t3{
+  
+
+z-index: 15;
+right:40px;
+bottom:70px;
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.hero-v3{
+padding:110px 20px 40px;
+}
+
+.hero-wrap{
+grid-template-columns:1fr;
+}
+
+.hero-left h1{
+font-size:48px;
+}
+
+.hero-right{
+height:500px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-left h1{
+font-size:38px;
+}
+
+.hero-btns{
+flex-direction:column;
+}
+
+.btn-main,
+.btn-glass{
+width:100%;
+text-align:center;
+}
+
+.hero-stats{
+flex-direction:column;
+}
+
+.card{
+width:160px;
+height:240px;
+}
+
+.c2{
+width:180px;
+height:280px;
+left:110px;
+}
+
+.float-tag{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="top-header">
+
+<div class="logo">grab<span>my</span>show</div>
+
+<div class="search-wrap">
+<input type="text" class="search-bar"
+placeholder="Search for Movies, Events, Sports and Activities">
+</div>
+
+<div class="right-actions">
+<a href="http://localhost:5000/dine-order" class="dine-btn">🍽 Dine Out</a>
+<span class="profile">
+<a href="history.html">👤</a>
+</span>
+</div>
+
+</header>
+
+<!-- HERO -->
+<!-- CINEMATIC HERO V2 -->
+<!-- HERO V3 REAL PREMIUM -->
+
+<section class="hero-v3">
+
+<div class="hero-bg"></div>
+<div class="hero-light one"></div>
+<div class="hero-light two"></div>
+
+<div class="hero-wrap">
+
+<!-- LEFT -->
+
+<div class="hero-left">
+
+<div class="hero-pill">🎬 India’s Premium Booking Platform</div>
+
+<h1>
+Book Movies.<br>
+Dine Better.<br>
+Live Moments.
+</h1>
+
+<p>
+Instant movie booking, luxury dining reservations and unforgettable nights —
+all in one premium experience.
+</p>
+
+<div class="hero-btns">
+
+<a href="#moviesContainer" class="btn-main">
+Book Tickets
+</a>
+
+<a href="http://localhost:5000/dine-order" class="btn-glass">
+Explore Dining
+</a>
+
+</div>
+
+<div class="hero-stats">
+
+<div class="s-box">
+<h3>50K+</h3>
+<span>Bookings Today</span>
+</div>
+
+<div class="s-box">
+<h3>4.9★</h3>
+<span>Ratings</span>
+</div>
+
+<div class="s-box">
+<h3>120+</h3>
+<span>Cities</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="hero-right">
+
+<div class="card c1">
+<img src="animal.webp">
+</div>
+
+<div class="card c2">
+<img src="jawan.png">
+</div>
+
+<div class="card c3">
+<img src="pathan.webp">
+</div>
+
+<div class="float-tag t1">🍿 Dining Add-ons</div>
+<div class="float-tag t2">🎟 Instant Tickets</div>
+<div class="float-tag t3">⭐ Premium Seats</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- MOVIES -->
+
+<section class="movies-section">
+
+<div class="section-header">
+<h2>Recommended Movies</h2>
+<a href="#">See All ›</a>
+</div>
+
+<div class="filters">
+<div class="filter">Trending</div>
+<div class="filter">Action</div>
+<div class="filter">Comedy</div>
+<div class="filter">Drama</div>
+<div class="filter">IMAX</div>
+</div>
+
+<div id="moviesContainer" class="movies-row">
+<!-- backend untouched -->
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-grid">
+
+<div>
+<div class="logo">grab<span>my</span>show</div>
+<p>
+One destination for movies, dining and unforgettable experiences.
+</p>
+</div>
+
+<div>
+<h4>Company</h4>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div>
+<h4>Services</h4>
+<a href="#">Movies</a>
+<a href="http://localhost:5000/dine-order">Dining</a>
+</div>
+
+<div>
+<h4>Account</h4>
+<a href="history.html">My Orders</a>
+<a href="#">Support</a>
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 GrabMyShow. All rights reserved.
+</div>
+
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/movies.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const searchInput = document.querySelector(".search-bar");
+
+searchInput.addEventListener("input", function () {
+
+const searchValue = this.value.toLowerCase().trim();
+
+const movies = document.querySelectorAll("#moviesContainer > div");
+
+movies.forEach(movie => {
+
+const title = movie.innerText.toLowerCase();
+
+if (title.includes(searchValue)) {
+movie.style.display = "block";
+} else {
+movie.style.display = "none";
+}
+
+});
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

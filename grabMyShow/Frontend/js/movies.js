@@ -1,5 +1,7 @@
 async function loadMovies() {
-  const res = await fetch(`${BASE_URL}/movies`);
+ const res = await fetch(
+"https://grabmyshow-backend.onrender.com/api/movies"
+);
   const movies = await res.json();
 
   const container = document.getElementById("moviesContainer");

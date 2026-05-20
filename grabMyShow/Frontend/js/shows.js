@@ -10,7 +10,7 @@ async function loadMovieDetails() {
     console.error("No movieId found");
     return;
   }
-const res = await fetch(`https://grabmyshow-backend.onrender.com/api/movies/${movieId}`);
+const res = await fetch(`${BASE_URL}/api/shows?movieId=${movieId}&city=${city}`);
   const movie = await res.json();
 
   // 🎬 Set title

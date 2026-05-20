@@ -59,7 +59,7 @@ async function loadShows() {
 
   const movieId = localStorage.getItem("movieId");
 
-  const city = "Ludhiana";
+  const city = "Delhi";
 
   try {
 

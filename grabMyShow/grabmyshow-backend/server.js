@@ -88,7 +88,6 @@ app.set("views", path.join(__dirname, "views"));
    STATIC FILES
 ================================= */
 app.use(express.static(path.join(__dirname, "../Frontend")));
-
 /* ===============================
    HOME ROUTE
 ================================= */

@@ -1,3 +1,4 @@
+const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
 async function createOrder() {
 
   if (!selectedSeats || selectedSeats.length === 0) {
@@ -13,7 +14,7 @@ async function createOrder() {
   try {
 
     // 1️⃣ Create order from backend
-    const res = await fetch("http://127.0.0.1:5000/api/payment/create-order", {
+    const res = await fetch(`${BASE_URL}/payment/create-order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +42,7 @@ async function createOrder() {
       handler: async function (response) {
 
         // 3️⃣ Verify payment
-        const verifyRes = await fetch("http://127.0.0.1:5000/api/payment/verify", {
+        const verifyRes = await fetch(`${BASE_URL}/payment/verify`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -116,7 +117,7 @@ selectedSeats.reduce(
 
 const res = await fetch(
 
-"http://127.0.0.1:5000/api/coupons/apply",
+`${BASE_URL}/coupons/apply`,
 
 {
 method: "POST",

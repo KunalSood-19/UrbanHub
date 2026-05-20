@@ -1,3 +1,4 @@
+const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
 let selectedSeats = [];
 let primePrice = 0;
 let classicPrice = 0;
@@ -5,8 +6,11 @@ let classicPrice = 0;
 /* ===============================
    SOCKET.IO CONNECT
 ================================= */
-const socket = io("https://grabmyshow-backend.onrender.com");
-
+const socket = io(
+"https://grabmyshow-backend.onrender.com",
+{
+  transports: ["websocket", "polling"]
+});
 async function loadSeats() {
   const showId = localStorage.getItem("showId");
 

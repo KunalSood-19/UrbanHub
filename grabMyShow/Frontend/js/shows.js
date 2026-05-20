@@ -1,3 +1,4 @@
+const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
 let selectedDate = null;
 let allShows = [];
 
@@ -9,8 +10,7 @@ async function loadMovieDetails() {
     console.error("No movieId found");
     return;
   }
-
-  const res = await fetch(`http://127.0.0.1:5000/api/movies/${movieId}`);
+const res = await fetch(`https://grabmyshow-backend.onrender.com/api/movies/${movieId}`);
   const movie = await res.json();
 
   // 🎬 Set title

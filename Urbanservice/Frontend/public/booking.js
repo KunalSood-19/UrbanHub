@@ -32,7 +32,7 @@ window.onload = function () {
             alert("Booking confirmed!");
             
             // 🔥 IMPORTANT CHANGE
-            window.location.href = "http://localhost:6000/bookings";
+           window.location.href = "index.html";
         })
         .catch(err => console.log(err));
 

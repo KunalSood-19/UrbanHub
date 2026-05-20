@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - UrbanHub</title>
+<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<nav>
+<h2>UrbanHub</h2>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="bookings.html">My Bookings</a></li>
+<li id="loginLink"><a href="login.html">Login</a></li>
+
+<li id="profileDropdown" class="profile-dropdown" style="display:none;">
+<a href="#" class="profile-btn">
+<span id="userInitial">U</span>
+</a>
+
+<div class="dropdown-menu">
+<a href="profile.html">My Profile</a>
+<a href="bookings.html">My Bookings</a>
+<a href="#" id="logoutBtn">Logout</a>
+</div>
+
+</li>
+</ul>
+</nav>
+
+
+<section class="services-page">
+
+<h1>Our Services</h1>
+
+<input type="text" id="searchBar" placeholder="Search services...">
+
+<div class="service-container" id="serviceList">
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h4>UrbanHub</h4>
+<p>Your trusted partner for all home services.</p>
+</div>
+
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li>Home Cleaning</li>
+<li>Electrician</li>
+<li>Plumber</li>
+<li>AC Repair</li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Contact</h4>
+<p>Email: support@urbanhub.com</p>
+<p>Phone: +1 234 567 890</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 UrbanHub</p>
+</div>
+
+</footer>
+
+
+<script>
+
+const container = document.getElementById("serviceList");
+
+fetch("http://localhost:7000/api/services")
+
+.then(response => response.json())
+
+.then(data => {
+
+container.innerHTML = "";
+
+data.forEach(service => {
+
+const card = `
+<div class="card">
+
+<img src="${service.image}">
+
+<div class="card-content">
+
+<h3>${service.name}</h3>
+
+<p>Professional home service</p>
+
+<div class="card-meta">
+
+<span class="price">From $${service.price}</span>
+
+<span class="rating">⭐ 4.8</span>
+
+</div>
+
+<a href="booking.html?service=${encodeURIComponent(service.name)}" class="book-btn">Book Now</a>
+
+</div>
+
+</div>
+`;
+
+container.innerHTML += card;
+
+});
+
+})
+
+.catch(error => {
+
+console.error("Error loading services:", error);
+
+container.innerHTML = "<p>Unable to load services</p>";
+
+});
+
+</script>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDnKeq3NuqdemRrK0Bud_HMfTuSnokoOIM",
+authDomain: "urbanhub1.firebaseapp.com",
+projectId: "urbanhub1",
+storageBucket: "urbanhub1.firebasestorage.app",
+messagingSenderId: "264905059920",
+appId: "1:264905059920:web:b569fe6a61778dba4b2b55"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+onAuthStateChanged(auth,(user)=>{
+
+const loginLink = document.getElementById("loginLink");
+
+const profileDropdown = document.getElementById("profileDropdown");
+
+const userInitial = document.getElementById("userInitial");
+
+
+if(user){
+
+loginLink.style.display="none";
+
+profileDropdown.style.display="block";
+
+const initial=user.email.charAt(0).toUpperCase();
+
+userInitial.textContent=initial;
+
+}
+
+else{
+
+loginLink.style.display="block";
+
+profileDropdown.style.display="none";
+
+}
+
+});
+
+
+document.getElementById("logoutBtn").addEventListener("click",(e)=>{
+
+e.preventDefault();
+
+signOut(auth).then(()=>{
+
+alert("Logged out");
+
+window.location.href="login.html";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanHub</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+<nav>
+    <h2>UrbanHub</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="bookings.html">My Bookings</a></li>
+        <li id="loginLink"><a href="login.html">Login</a></li>
+        <li id="profileDropdown" class="profile-dropdown" style="display:none;">
+            <a href="#" class="profile-btn">
+                <span id="userInitial">U</span>
+            </a>
+            <div class="dropdown-menu">
+                <a href="profile.html">My Profile</a>
+                <a href="bookings.html">My Bookings</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Book Trusted Home Services</h1>
+    <p>Cleaning, Plumbing, Electrician & more</p>
+    <a href="services.html">Explore Services</a>
+</section>
+
+<section class="services">
+
+<h2>Popular Services</h2>
+
+<div class="service-container">
+
+<div class="card">
+<img src="homecleaning.jpg" alt="Cleaning">
+<div class="card-content">
+<h3>Home Cleaning</h3>
+<p>Deep home cleaning service by trained professionals</p>
+<div class="card-meta">
+<span class="price">From $49</span>
+<span class="rating">⭐ 4.8</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="electric.jpg" alt="Electrician">
+<div class="card-content">
+<h3>Electrician</h3>
+<p>Expert electrical repairs and installations</p>
+<div class="card-meta">
+<span class="price">From $39</span>
+<span class="rating">⭐ 4.7</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="plumber.jpg" alt="Plumber">
+<div class="card-content">
+<h3>Plumber</h3>
+<p>Pipe repair, installation & leak fixing</p>
+<div class="card-meta">
+<span class="price">From $45</span>
+<span class="rating">⭐ 4.6</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="ac.jpg" alt="AC Repair">
+<div class="card-content">
+<h3>AC Repair</h3>
+<p>AC servicing, repair & gas refilling</p>
+<div class="card-meta">
+<span class="price">From $59</span>
+<span class="rating">⭐ 4.9</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="carpenter.jpg" alt="Carpenter">
+<div class="card-content">
+<h3>Carpenter</h3>
+<p>Furniture repair & custom woodwork</p>
+<div class="card-meta">
+<span class="price">From $55</span>
+<span class="rating">⭐ 4.5</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="painter.jpg" alt="Painter">
+<div class="card-content">
+<h3>Painter</h3>
+<p>Interior & exterior painting services</p>
+<div class="card-meta">
+<span class="price">From $79</span>
+<span class="rating">⭐ 4.8</span>
+</div>
+<a href="#" class="book-btn">Book Now</a>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<div class="footer-container">
+<div class="footer-col">
+<h4>UrbanHub</h4>
+<p>Your trusted partner for all home services. Quality work, guaranteed satisfaction.</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li><a href="#">Home Cleaning</a></li>
+<li><a href="#">Electrician</a></li>
+<li><a href="#">Plumber</a></li>
+<li><a href="#">AC Repair</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contact Us</h4>
+<p>Email: support@urbanhub.com</p>
+<p>Phone: +1 234 567 890</p>
+<p>Address: 123 Service Lane, City</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 UrbanHub. All rights reserved.</p>
+</div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDnKeq3NuqdemRrK0Bud_HMfTuSnokoOIM",
+  authDomain: "urbanhub1.firebaseapp.com",
+  projectId: "urbanhub1",
+  storageBucket: "urbanhub1.firebasestorage.app",
+  messagingSenderId: "264905059920",
+  appId: "1:264905059920:web:b569fe6a61778dba4b2b55"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+    const loginLink = document.getElementById("loginLink");
+    const profileDropdown = document.getElementById("profileDropdown");
+    const userInitial = document.getElementById("userInitial");
+    
+    if (user) {
+        loginLink.style.display = "none";
+        profileDropdown.style.display = "block";
+        const initial = user.email ? user.email.charAt(0).toUpperCase() : "U";
+        userInitial.textContent = initial;
+    } else {
+        loginLink.style.display = "block";
+        profileDropdown.style.display = "none";
+    }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    signOut(auth).then(() => {
+        alert("Logged out successfully");
+        window.location.href = "login.html";
+    }).catch((error) => {
+        alert(error.message);
+    });
+});
+</script>
+
+</body>
+</html>

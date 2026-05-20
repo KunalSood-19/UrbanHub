@@ -1,4 +1,4 @@
-const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
+// const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
 async function createOrder() {
 
   if (!selectedSeats || selectedSeats.length === 0) {

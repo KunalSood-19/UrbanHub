@@ -1,4 +1,4 @@
-const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
+// const BASE_URL = "https://grabmyshow-backend.onrender.com/api";
 let selectedSeats = [];
 let primePrice = 0;
 let classicPrice = 0;

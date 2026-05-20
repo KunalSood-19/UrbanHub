@@ -87,13 +87,13 @@ app.set("views", path.join(__dirname, "views"));
 /* ===============================
    STATIC FILES
 ================================= */
-app.use(express.static(path.resolve(__dirname, "..", "Frontend")));
-/* ===============================
-   HOME ROUTE
-================================= */
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "Frontend", "index.html"));
-});
+// app.use(express.static(path.resolve(__dirname, "..", "Frontend")));
+// /* ===============================
+//    HOME ROUTE
+// ================================= */
+// app.get("/", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "..", "Frontend", "index.html"));
+// });
 
 /* ===============================
    SOCKET.IO LOGIC

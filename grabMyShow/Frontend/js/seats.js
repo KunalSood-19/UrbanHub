@@ -5,7 +5,7 @@ let classicPrice = 0;
 /* ===============================
    SOCKET.IO CONNECT
 ================================= */
-const socket = io("http://127.0.0.1:5000");
+const socket = io("https://grabmyshow-backend.onrender.com");
 
 async function loadSeats() {
   const showId = localStorage.getItem("showId");

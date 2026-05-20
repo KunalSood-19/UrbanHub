@@ -8,7 +8,7 @@ const path = require("path");
 const http = require("http");
 const { Server } = require("socket.io");
 const cookieParser = require("cookie-parser");
-const { Pool } = require("pg");
+// const { Pool } = require("pg");
 
 const connectDB = require("./config/db");
 
@@ -38,24 +38,24 @@ connectDB();
 /* ===============================
    POSTGRESQL CONNECT
 ================================= */
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "dineout",
-  password: "kunalsood8858@",
-  port: 5432
-});
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "dineout",
+//   password: "kunalsood8858@",
+//   port: 5432
+// });
 
-pool.connect((err) => {
+// pool.connect((err) => {
 
-  if (err) {
-    console.log("❌ PostgreSQL Error");
-    console.log(err);
-  } else {
-    console.log("✅ PostgreSQL Connected");
-  }
+//   if (err) {
+//     console.log("❌ PostgreSQL Error");
+//     console.log(err);
+//   } else {
+//     console.log("✅ PostgreSQL Connected");
+//   }
 
-});
+// });
 
 /* ===============================
    MIDDLEWARE

@@ -8,7 +8,7 @@ const path = require("path");
 const http = require("http");
 const { Server } = require("socket.io");
 const cookieParser = require("cookie-parser");
-// const { Pool } = require("pg");
+const { Pool } = require("pg");
 
 const connectDB = require("./config/db");
 
@@ -56,6 +56,17 @@ connectDB();
 //   }
 
 // });
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+pool.connect()
+  .then(() => console.log("✅ PostgreSQL Connected"))
+  .catch(err => console.log("❌ PostgreSQL Error", err));
 
 /* ===============================
    MIDDLEWARE

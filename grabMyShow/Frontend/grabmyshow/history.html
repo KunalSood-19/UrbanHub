@@ -72,7 +72,7 @@ async function loadBookings(){
 
 const token = localStorage.getItem("token");
 
-const res = await fetch("http://127.0.0.1:5000/api/booking/my-bookings",{
+const res = await fetch("https://grabmyshow-backend.onrender.com/api/booking/my-bookings",{
 headers:{
 "Authorization":"Bearer "+token
 }

@@ -33,7 +33,11 @@ const io = new Server(server, {
 /* ===============================
    DB CONNECT
 ================================= */
+
+
 connectDB();
+
+
 
 /* ===============================
    POSTGRESQL CONNECT
@@ -64,9 +68,15 @@ const pool = new Pool({
   }
 });
 
+if(process.env.NODE_ENV !== "test"){
+
 pool.connect()
-  .then(() => console.log("✅ PostgreSQL Connected"))
-  .catch(err => console.log("❌ PostgreSQL Error", err));
+
+.then(() => console.log("✅ PostgreSQL Connected"))
+
+.catch(err => console.log("❌ PostgreSQL Error", err));
+
+}
 
 /* ===============================
    MIDDLEWARE
@@ -457,6 +467,18 @@ app.use((err, req, res, next) => {
 ================================= */
 const PORT = process.env.PORT || 5000;
 
+if(process.env.NODE_ENV !== "test"){
+if(process.env.NODE_ENV !== "test"){
+
 server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+
+console.log(`🚀 Server running on port ${PORT}`);
+
 });
+
+}
+
+module.exports = app;
+}
+
+module.exports = app;
